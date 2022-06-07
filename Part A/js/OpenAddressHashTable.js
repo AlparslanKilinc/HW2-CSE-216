@@ -65,6 +65,28 @@ export default class OpenAddressHashTable {
     
     // @todo - YOU MUST DEFINE THIS METHOD
     removeValue(key) {   
+        let index = this.hashCode(key);
+        let pair = this.hashTable[index];
+        // index to length
+        for(let i=index; i<this.length; i++){
+            pair=this.hashTable[i];
+            if(pair!=null && pair.key===key){
+                this.hashTable.splice(i,1,null);
+                this.size--;
+                this.rehash();
+                return;
+            }
+        }
+        /// 0 to index
+        for(let i=0; i<index; i++){
+           pair=this.hashTable[i];
+           if(pair!=null && pair.key===key){
+                this.hashTable.splice(i,1,null);
+                this.size--;
+                this.rehash();
+                return;
+          }
+        }
     }
 
     // @todo - YOU MUST DEFINE THIS METHOD
@@ -73,10 +95,8 @@ export default class OpenAddressHashTable {
         let index = this.hashCode(key);
         let pair = this.hashTable[index];
         let NewPair = new KeyValuePair(key,item);
-
         //// Case 1 Key Exists in the HashTable 
         if(this.replace(key,item)) return;
-
         /// Case 2 HashTable is Full
          if(this.size===this.length){
             this.length=this.length*2;
@@ -84,7 +104,6 @@ export default class OpenAddressHashTable {
             index = this.hashCode(key);
             pair  = this.hashTable[index];
          }
-        
         /// Case 3 Insert Item Into Natural Index If Available If Not Linear Probing
         /// Natural Index
         if(pair==null){
@@ -93,7 +112,6 @@ export default class OpenAddressHashTable {
             return;
         }
         /// Linear Probing 
-
         // index to length
         for(let i=index; i<this.length; i++){
             pair=this.hashTable[i];
@@ -103,7 +121,6 @@ export default class OpenAddressHashTable {
                 return;
             }
         }
-        
         /// 0 to index
         for(let i=0; i<index; i++){
             pair=this.hashTable[i];
@@ -143,7 +160,7 @@ export default class OpenAddressHashTable {
             this.hashTable[i]=null;
         }
         for(let i=0; i<values.length; i++){
-         this.putValue(values[i].key,values[i].value);
+         if(values[i]!=null) this.putValue(values[i].key,values[i].value);
         }
     }
 

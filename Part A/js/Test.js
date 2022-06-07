@@ -54,11 +54,11 @@ addPersonToHashTable(new Person(hashTable.generateKey(), "Roger", "Waters"), has
     printHashTable("\nAfter Changing 3 Items", hashTable);
 
 // AND DEMONSTRATE REMOVING ITEMS FROM THE BST
-// hashTable.removeValue(jlKey);
-// printHashTable("\nAfter Removing Otis Redding", hashTable);
+    hashTable.removeValue(jlKey);
+    printHashTable("\nAfter Removing Otis Redding", hashTable);
 
-// hashTable.removeValue(cwKey);
-// printHashTable("\nAfter Removing Keith Richards", hashTable);
+    hashTable.removeValue(cwKey);
+    printHashTable("\nAfter Removing Keith Richards", hashTable);
 
-// hashTable.removeValue(dgKey);
-// printHashTable("\nAfter Removing Bill Withers", hashTable);
+    hashTable.removeValue(dgKey);
+    printHashTable("\nAfter Removing Bill Withers", hashTable);
