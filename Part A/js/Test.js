@@ -31,34 +31,34 @@ addPersonToHashTable(new Student(hashTable.generateKey(), "Jimi", "Hendrix", 3.6
 addPersonToHashTable(new Person(hashTable.generateKey(), "Roger", "Waters"), hashTable);
 
 // DEMONSTRATE MAKING KEYS AND ADDING VALUES TO THE HASH TABLE    
-let jlKey = hashTable.generateKey();
-hashTable.putValue(jlKey, new Student(jlKey, "John", "Lennon", 3.8));
-let cwKey = hashTable.generateKey();
-hashTable.putValue(cwKey, new Student(cwKey, "Charlie", "Watts", 3.1));
-let dgKey = hashTable.generateKey();
-hashTable.putValue(dgKey, new Employee(dgKey, "David", "Gilmour", 120000));
-printHashTable("\nAfter Changing 3 Items", hashTable);
+    let jlKey = hashTable.generateKey();
+    hashTable.putValue(jlKey, new Student(jlKey, "John", "Lennon", 3.8));
+    let cwKey = hashTable.generateKey();
+    hashTable.putValue(cwKey, new Student(cwKey, "Charlie", "Watts", 3.1));
+    let dgKey = hashTable.generateKey();
+    hashTable.putValue(dgKey, new Employee(dgKey, "David", "Gilmour", 120000));
+    printHashTable("\nAfter Changing 3 Items", hashTable);
 
 // DEMONSTRATE GETTING VALUES FROM THE HASH TABLE
-let p = hashTable.getValue(jlKey);
-console.log("\nget " + jlKey + ": " + p.toString() + "\n");
-p = hashTable.getValue(cwKey);
-console.log("\nget " + cwKey + ": " + p.toString() + "\n");
-p = hashTable.getValue(dgKey);
-console.log("\nget " + dgKey + ": " + p.toString() + "\n");
+    let p = hashTable.getValue(jlKey);
+    console.log("\nget " + jlKey + ": " + p.toString() + "\n");
+    p = hashTable.getValue(cwKey);
+    console.log("\nget " + cwKey + ": " + p.toString() + "\n");
+    p = hashTable.getValue(dgKey);
+    console.log("\nget " + dgKey + ": " + p.toString() + "\n");
 
 // NOW LET'S TRY REPLACING THE DATA IN THE ABOVE THREE
-hashTable.putValue(jlKey, new Student(jlKey, "Otis", "Redding", 3.5));
-hashTable.putValue(cwKey, new Student(cwKey, "Keith", "Richards", 3.1));
-hashTable.putValue(dgKey, new Student(dgKey, "Bill", "Withers", 3.4));
-printHashTable("\nAfter Changing 3 Items", hashTable);
+    hashTable.putValue(jlKey, new Student(jlKey, "Otis", "Redding", 3.5));
+    hashTable.putValue(cwKey, new Student(cwKey, "Keith", "Richards", 3.1));
+    hashTable.putValue(dgKey, new Student(dgKey, "Bill", "Withers", 3.4));
+    printHashTable("\nAfter Changing 3 Items", hashTable);
 
 // AND DEMONSTRATE REMOVING ITEMS FROM THE BST
-hashTable.removeValue(jlKey);
-printHashTable("\nAfter Removing Otis Redding", hashTable);
+// hashTable.removeValue(jlKey);
+// printHashTable("\nAfter Removing Otis Redding", hashTable);
 
-hashTable.removeValue(cwKey);
-printHashTable("\nAfter Removing Keith Richards", hashTable);
+// hashTable.removeValue(cwKey);
+// printHashTable("\nAfter Removing Keith Richards", hashTable);
 
-hashTable.removeValue(dgKey);
-printHashTable("\nAfter Removing Bill Withers", hashTable);
+// hashTable.removeValue(dgKey);
+// printHashTable("\nAfter Removing Bill Withers", hashTable);
