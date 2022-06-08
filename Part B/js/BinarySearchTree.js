@@ -30,7 +30,27 @@ export default class BinarySearchTree {
 
     // @todo - YOU MUST DEFINE THIS METHOD
     putValue(key, value) {
+        if(this.root==null){
+            this.root= new Node(key,value,null,null,null);
+            this.size++;
+            return;
+        }
+        this.add(this.root,key,value,null);
+        this.size++;
+    }
 
+    add(node,key,value,parent){
+        if(node==null){
+            node= new Node(key,value,parent,null,null);
+        }else{
+            if(key===node.key){
+                node.data=value;
+                return node;
+            }
+            else if(key<node.key) node.left = this.add(node.left,key,value,node);
+            else node.right= this.add(node.right,key,value,node);
+        }
+        return node;
     }
 
     // @todo - YOU MUST DEFINE THIS METHOD
