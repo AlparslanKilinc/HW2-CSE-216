@@ -55,11 +55,19 @@ export default class BinarySearchTree {
 
     // @todo - YOU MUST DEFINE THIS METHOD
     getValue(key) {
-        return null;
+        return this.findKey(key,this.root);
+    }
+    findKey(key,node){
+        if(node==null) return null;
+        let cKey=node.key;
+        if(key<cKey) return this.findKey(key,node.left);
+        else if (key>cKey) return this.findKey(key,node.right);
+        else return node.data;
     }
 
     // @todo - YOU MUST DEFINE THIS METHOD
     removeValue(key) {
+
 
     }
 
