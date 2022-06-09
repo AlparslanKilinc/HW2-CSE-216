@@ -30,8 +30,8 @@ export default class BinarySearchTree {
 
     // @todo - YOU MUST DEFINE THIS METHOD
     putValue(key, value) {
-        if(this.root==null){
-            this.root= new Node(key,value,null,null,null);
+        if(this.root===null){
+            this.root = new Node(key,value,null,null,null);
             this.size++;
             return;
         }
@@ -40,11 +40,12 @@ export default class BinarySearchTree {
     }
 
     add(node,key,value,parent){
-        if(node==null){
-            node= new Node(key,value,parent,null,null);
+        if(node===null){
+            node = new Node(key,value,parent,null,null);
         }else{
             if(key===node.key){
                 node.data=value;
+                this.size--;
                 return node;
             }
             else if(key<node.key) node.left = this.add(node.left,key,value,node);
@@ -67,9 +68,36 @@ export default class BinarySearchTree {
 
     // @todo - YOU MUST DEFINE THIS METHOD
     removeValue(key) {
-
-
+        this.root=this.remover(this.root,key);
+        this.size--;
     }
+
+    remover(node,key){
+        if(node === null) return null;
+        if(key === node.key){
+            if(!node.left && !node.right) return null;
+            else if(!node.left) return node.right;
+            else if(!node.right) return node.left;
+            else{
+                let tempNode =this.getMin(node.right);
+                node.data=tempNode.data;
+                node.key=tempNode.key;
+                node.right= this.remover(node.right,tempNode.key);
+                return node;
+            }
+        }else if(key < node.key) {
+            node.left= this.remover(node.left,key);
+            return node;
+        }else {
+            node.right= this.remover(node.right,key);
+            return node;
+        }
+    }
+    getMin(node){
+        while(!node.left ===null) node = node.left;
+        return node;
+    }
+        
 
     toStringRecursively(traveller, level) {
         let text = "";
