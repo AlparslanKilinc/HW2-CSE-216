@@ -79,10 +79,10 @@ export default class BinarySearchTree {
             else if(!node.left) return node.right;
             else if(!node.right) return node.left;
             else{
-                let tempNode =this.getMin(node.right);
+                let tempNode =this.getMax(node.left);
                 node.data=tempNode.data;
                 node.key=tempNode.key;
-                node.right= this.remover(node.right,tempNode.key);
+                node.left= this.remover(node.left,tempNode.key);
                 return node;
             }
         }else if(key < node.key) {
@@ -93,8 +93,8 @@ export default class BinarySearchTree {
             return node;
         }
     }
-    getMin(node){
-        while(!node.left ===null) node = node.left;
+    getMax(node){
+        while(!node && !node.right==null) node = node.right;
         return node;
     }
         

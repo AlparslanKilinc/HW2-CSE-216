@@ -62,8 +62,8 @@ console.log(tree.size);
 tree.removeValue(dgKey);
 printBST("\nAfter Removing Bill Withers", tree);
 console.log(tree.size);
-tree.removeValue("X1EVE7NM");
-printBST("\nAfter Removing Paul", tree);
+tree.removeValue("JY9757AC");
+printBST("\nAfter Removing Root", tree);
 console.log(tree.size);
 
 
