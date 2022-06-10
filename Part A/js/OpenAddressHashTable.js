@@ -98,7 +98,7 @@ export default class OpenAddressHashTable {
         //// Case 1 Key Exists in the HashTable 
         if(this.replace(key,item)) return;
         /// Case 2 HashTable is Full
-         if(this.size===this.length){
+         if(this.size==this.length){
             this.length=this.length*2;
             this.rehash();
             index = this.hashCode(key);
@@ -138,14 +138,14 @@ export default class OpenAddressHashTable {
 
         for(let i=index; i<this.length; i++){
             pair=this.hashTable[i];
-            if(pair!=null && pair.key===key){
+            if(pair!=null && pair.key==key){
                 pair.value=item;
                 return true;
             } 
         }
         for(let i=0; i<index; i++){
             pair=this.hashTable[i];
-            if(pair!=null && pair.key===key){
+            if(pair!=null && pair.key==key){
                 pair.value=item;
                 return true;
             } 
@@ -157,7 +157,9 @@ export default class OpenAddressHashTable {
         let values = Object.values(this.hashTable);
         console.log(values);
         for(let i=0; i<this.length; i++){
+            if(this.hashTable[i]!=null)this.size--;
             this.hashTable[i]=null;
+            
         }
         for(let i=0; i<values.length; i++){
          if(values[i]!=null) this.putValue(values[i].key,values[i].value);
