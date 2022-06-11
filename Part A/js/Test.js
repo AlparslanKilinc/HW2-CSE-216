@@ -22,6 +22,8 @@ function addPersonToHashTable(person, hashTable) {
 let hashTable = new OpenAddressHashTable(NUM_BINS, KEY_LENGTH);
 
 // DEMONSTRATE ADDING VALUES TO THE HASH TABLE, WHICH INCLUDES THE NEED TO MAKE THE HASH TABLE BIGGER
+
+
 addPersonToHashTable(new Student(hashTable.generateKey(), "George", "Harrison", 4.0), hashTable);
 addPersonToHashTable(new Employee(hashTable.generateKey(), "Paul", "McCartney", 80000), hashTable);
 addPersonToHashTable(new Employee(hashTable.generateKey(), "Ringo", "Starr", 40000), hashTable);
@@ -37,11 +39,9 @@ addPersonToHashTable(new Person(hashTable.generateKey(), "Roger", "Waters"), has
     hashTable.putValue(cwKey, new Student(cwKey, "Charlie", "Watts", 3.1));
     let dgKey = hashTable.generateKey();
     hashTable.putValue(dgKey, new Employee(dgKey, "David", "Gilmour", 120000));
-    let ugKey = hashTable.generateKey();
+
     printHashTable("\nAfter Adding 3 Items", hashTable);
-// DEMONSTRATE ADDING UNDERGRADUATE
-    hashTable.putValue(ugKey, new Undergraduate(ugKey, "Meow", "Meow", 4.0,"U-3"));
-    printHashTable("\nAfter Adding Undergraduate", hashTable);
+  
    
 // DEMONSTRATE GETTING VALUES FROM THE HASH TABLE
     let p = hashTable.getValue(jlKey);
@@ -50,17 +50,11 @@ addPersonToHashTable(new Person(hashTable.generateKey(), "Roger", "Waters"), has
     console.log("\nget " + cwKey + ": " + p.toString() + "\n");
     p = hashTable.getValue(dgKey);
     console.log("\nget " + dgKey + ": " + p.toString() + "\n");
-// DEMONSTRATE GETTING UNDERGRADUATE
-    p = hashTable.getValue(ugKey);
-    console.log("\nget " + ugKey + ": " + p.toString() + "\n");
 
 // NOW LET'S TRY REPLACING THE DATA IN THE ABOVE THREE
     hashTable.putValue(jlKey, new Student(jlKey, "Otis", "Redding", 3.5));
     hashTable.putValue(cwKey, new Student(cwKey, "Keith", "Richards", 3.1));
     hashTable.putValue(dgKey, new Student(dgKey, "Bill", "Withers", 3.4));
-// DEMONSTRATE REPLACING UNDERGRADUATE
-    hashTable.putValue(ugKey, new Undergraduate(ugKey, "Bark", "Bark", 3.4,"U-3"));
-    printHashTable("\nAfter Changing 3 Items", hashTable);
 
 // AND DEMONSTRATE REMOVING ITEMS FROM THE BST
     hashTable.removeValue(jlKey);
@@ -71,6 +65,23 @@ addPersonToHashTable(new Person(hashTable.generateKey(), "Roger", "Waters"), has
 
     hashTable.removeValue(dgKey);
     printHashTable("\nAfter Removing Bill Withers", hashTable);
-// DEMONSTRATE REMOVING UNDERGRADUATE
+
+// DEMONSTRATE UNDERGRADUATE
+    let ugKey = hashTable.generateKey();
+    hashTable.putValue(ugKey, new Undergraduate(ugKey, "Meow", "Meow", 4.0,"U-3"));
+    printHashTable("\nAfter Adding Undergraduate", hashTable);
+
+    // DEMONSTRATE GETTING UNDERGRADUATE
+    p = hashTable.getValue(ugKey);
+    console.log("\nget " + ugKey + ": " + p.toString() + "\n");
+
+    // DEMONSTRATE REPLACING UNDERGRADUATE
+    hashTable.putValue(ugKey, new Undergraduate(ugKey, "Bark", "Bark", 3.4,"U-3"));
+    printHashTable("\nAfter  Replacing Meow to Bark", hashTable);
+    
+    // DEMONSTRATE REMOVING UNDERGRADUATE
     hashTable.removeValue(ugKey);
-    printHashTable("\nAfter Removing Bark Bark", hashTable);
+    printHashTable("\nAfter Removing Meow Meow", hashTable);
+
+   
+   

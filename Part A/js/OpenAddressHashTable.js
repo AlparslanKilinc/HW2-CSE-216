@@ -138,14 +138,14 @@ export default class OpenAddressHashTable {
 
         for(let i=index; i<this.length; i++){
             pair=this.hashTable[i];
-            if(pair!=null && pair.key==key){
+            if(pair!=null && pair.key===key){
                 pair.value=item;
                 return true;
             } 
         }
         for(let i=0; i<index; i++){
             pair=this.hashTable[i];
-            if(pair!=null && pair.key==key){
+            if(pair!=null && pair.key===key){
                 pair.value=item;
                 return true;
             } 
