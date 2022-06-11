@@ -21,20 +21,27 @@ function addPersonToBST(person, tree) {
 let tree = new BinarySearchTree(KEY_LENGTH);
 
 // DEMONSTRATE ADDING VALUES TO THE BST, WHICH INCLUDES THE NEED TO MAKE THE BST BIGGER
-addPersonToBST(new Student("JY9757AC", "George", "Harrison", 4.0), tree);
-addPersonToBST(new Employee("X1EVE7NM", "Paul", "McCartney", 80000), tree);
-addPersonToBST(new Employee("OIGSZ8FX", "Ringo", "Starr", 40000), tree);
-addPersonToBST(new Person("QQQVJJ5I", "Chuck", "Berry"), tree);
-addPersonToBST(new Student("IU531GVY", "Mick", "Jagger", 3.5), tree);
-addPersonToBST(new Student("X99BWDEK", "Jimi", "Hendrix", 3.6), tree);
-addPersonToBST(new Person("BUATAJ889", "Roger", "Waters"), tree);
+let gKey= tree.generateKey();
+let pKey= tree.generateKey();
+let rKey= tree.generateKey();
+let cKey= tree.generateKey();
+let mKey= tree.generateKey();
+let jKey= tree.generateKey();
+let rwKey= tree.generateKey();
+addPersonToBST(new Student(gKey, "George", "Harrison", 4.0), tree);
+addPersonToBST(new Employee(pKey, "Paul", "McCartney", 80000), tree);
+addPersonToBST(new Employee(rKey, "Ringo", "Starr", 40000), tree);
+addPersonToBST(new Person(cKey, "Chuck", "Berry"), tree);
+addPersonToBST(new Student(mKey, "Mick", "Jagger", 3.5), tree);
+addPersonToBST(new Student(jKey, "Jimi", "Hendrix", 3.6), tree);
+addPersonToBST(new Person(rwKey, "Roger", "Waters"), tree);
 
 // DEMONSTRATE MAKING KEYS AND ADDING VALUES TO THE BST    
-let jlKey = "EE4DX9WF";
+let jlKey = tree.generateKey();
 tree.putValue(jlKey, new Student(jlKey, "John", "Lennon", 3.8));
-let cwKey = "KHYLDTOR";
+let cwKey = tree.generateKey();
 tree.putValue(cwKey, new Student(cwKey, "Charlie", "Watts", 3.1));
-let dgKey = "I92F2WFE";
+let dgKey = tree.generateKey();
 tree.putValue(dgKey, new Employee(dgKey, "David", "Gilmour", 120000));
 printBST("\nAfter Changing 3 Items", tree);
 
@@ -55,15 +62,60 @@ printBST("\nAfter Changing 3 Items", tree);
 /// AND DEMONSTRATE REMOVING ITEMS FROM THE BST
 tree.removeValue(jlKey);
 printBST("\nAfter Removing Otis Redding", tree);
-console.log(tree.size);
+
 tree.removeValue(cwKey);
 printBST("\nAfter Removing Keith Richards", tree);
-console.log(tree.size);
+
 tree.removeValue(dgKey);
 printBST("\nAfter Removing Bill Withers", tree);
-console.log(tree.size);
-tree.removeValue("JY9757AC");
+
+tree.removeValue(gKey);
 printBST("\nAfter Removing Root", tree);
-console.log(tree.size);
+
+/// Further Testing Right Subtree Removal 
+tree.removeValue(rwKey);
+printBST("\nAfter Removing Roger Waters", tree);
+
+tree.removeValue(mKey);
+printBST("\nAfter Removing Mick Jagger", tree); 
+
+/// Adding Values 
+let clKey=tree.generateKey();
+let baKey=tree.generateKey();
+let jsKey=tree.generateKey();
+tree.putValue(clKey, new Student(clKey, "Code", "Lover", 3.5));
+tree.putValue(baKey, new Student(baKey, "Bisco", "Arrow", 3.1));
+tree.putValue(jsKey, new Student(jsKey, "Jack", "Sparrow", 3.4));
+printBST("\nAfter Adding 3 Items", tree);
+
+/// Replacing  
+tree.putValue(clKey, new Student(clKey, "Dark", "Spin", 3.5));
+tree.putValue(baKey, new Student(baKey, "Caramel", "Drop", 3.1));
+tree.putValue(jsKey, new Student(jsKey, "Heisenberg", "White", 3.4));
+printBST("\nAfter Replacing 3 Items", tree);
+
+tree.removeValue(jsKey);
+printBST("\nAfter Removing Heisenberg White", tree); 
+
+/// Delete Everything 
+tree.removeValue(clKey);
+tree.removeValue(baKey);
+tree.removeValue(pKey);
+tree.removeValue(rKey);
+tree.removeValue(cKey);
+tree.removeValue(jKey);
+
+/// Enter All Left Sub Tree
+ tree.putValue("zzzzzzzz", new Student("zzzzzzzz", "Code", "Lover", 3.5));
+ printBST("\nAfter Adding 1 More Item", tree);
+tree.putValue("yyyyyyyy", new Student("yyyyyyyy", "Bisco", "Arrow", 3.1));
+tree.putValue("wwwwwwww", new Student("wwwwwwww", "Jack", "Sparrow", 3.4));
+printBST("\nAfter Adding 3 Items", tree);
+
+/// RIGHT SUBTREE Of W 
+tree.putValue("aaaaaaaa", new Student("aaaaaaaa", "Cat", "Meow", 3.5));
+tree.putValue("bbbbbbbb", new Student("bbbbbbbb", "Dog", "Bark", 3.1));
+tree.putValue("cccccccc", new Student("cccccccc", "Bird", "Fly", 3.4));
+printBST("\nAfter Adding 3 More Items", tree);
 
 

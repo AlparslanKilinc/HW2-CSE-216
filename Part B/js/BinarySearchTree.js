@@ -59,7 +59,7 @@ export default class BinarySearchTree {
         return this.findKey(key,this.root);
     }
     findKey(key,node){
-        if(node==null) return null;
+        if(node===null) return null;
         let cKey=node.key;
         if(key<cKey) return this.findKey(key,node.left);
         else if (key>cKey) return this.findKey(key,node.right);
@@ -73,29 +73,32 @@ export default class BinarySearchTree {
     }
 
     remover(node,key){
-        if(node === null) return null;
-        if(key === node.key){
-            if(!node.left && !node.right) return null;
-            else if(!node.left) return node.right;
-            else if(!node.right) return node.left;
-            else{
-                let tempNode =this.getMax(node.left);
-                node.data=tempNode.data;
-                node.key=tempNode.key;
-                node.left= this.remover(node.left,tempNode.key);
-                return node;
+       if(node===null) return node;
+       if(key<node.key) node.left=this.remover(node.left,key);
+       else if(key>node.key) node.right = this.remover(node.right,key);
+       else{
+            if(node.left=== null && node.right === null ) return null;
+            else if(node.left == null){
+                let rchild = node.right;
+                node=null;
+                return rchild;
             }
-        }else if(key < node.key) {
-            node.left= this.remover(node.left,key);
-            return node;
-        }else {
-            node.right= this.remover(node.right,key);
-            return node;
-        }
+            else if(node.right==null){
+                let lchild = node.left;
+                node = null;
+                return lchild;
+            }
+            let temp = this.getMax(node.left);
+            node.key=temp.key;
+            node.data=temp.data;
+            node.left=this.remover(node.left,temp.key);
+       }
+       return node;
     }
     getMax(node){
-        while(!node && !node.right==null) node = node.right;
-        return node;
+        let current = node;
+        while(current && current.right !=null) current = current.right;
+        return current;
     }
         
 
