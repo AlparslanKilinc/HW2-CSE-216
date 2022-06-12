@@ -98,7 +98,7 @@ export default class OpenAddressHashTable {
         //// Case 1 Key Exists in the HashTable 
         if(this.replace(key,item)) return;
         /// Case 2 HashTable is Full
-         if(this.size==this.length){
+         if(this.size===this.length){
             this.length=this.length*2;
             this.rehash();
             index = this.hashCode(key);
